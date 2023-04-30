@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('full_name');
             $table->boolean('is_admin');
-            // aguardando a resposta do adeildo
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
-            // $table->rememberToken();
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
