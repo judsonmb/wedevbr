@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('products');
+            $table->string('name');
             $table->foreignId('merchant_id')->constrained();
             $table->integer('price');
             $table->enum('status', ['out_of_stock', 'in_stock', 'running_low']);
