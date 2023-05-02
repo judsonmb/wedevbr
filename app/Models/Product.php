@@ -11,6 +11,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $timestamps = ['created_at'];
+    const UPDATED_AT = null;
+
     /**
      * The attributes that are mass assignable.
      *
