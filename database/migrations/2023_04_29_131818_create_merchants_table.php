@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('merchants', function (Blueprint $table) {
             $table->id();
             $table->string('merchant_name');
-            $table->timestamps();
             $table->unsignedBigInteger('admin_id');
+            $table->timestamps();
  
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
         });

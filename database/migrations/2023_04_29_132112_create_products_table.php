@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('merchant_id')->constrained();
             $table->decimal('price', 10, 2);
             $table->enum('status', ['out_of_stock', 'in_stock', 'running_low']);
+            $table->unsignedBigInteger('merchant_id');
             $table->timestamp('created_at');
 
             $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
