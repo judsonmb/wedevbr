@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('merchant_id')->constrained();
-            $table->integer('price');
+            $table->decimal('price', 10, 2);
             $table->enum('status', ['out_of_stock', 'in_stock', 'running_low']);
             $table->timestamp('created_at');
         });
