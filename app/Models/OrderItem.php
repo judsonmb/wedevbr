@@ -17,6 +17,8 @@ class OrderItem extends Model
      */
     protected $table = 'order_items';
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
