@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('merchant_id')->constrained();
             $table->integer('price');
             $table->enum('status', ['out_of_stock', 'in_stock', 'running_low']);
-            $table->timestamps();
+            $table->timestamp('created_at');
         });
     }
 
