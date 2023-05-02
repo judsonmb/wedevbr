@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('merchant_id')->constrained();
-            $table->integer('price');
+            $table->unsignedBigInteger('merchant_id')->constrained();
+            $table->decimal('price', 10, 2);
             $table->enum('status', ['out_of_stock', 'in_stock', 'running_low']);
             $table->timestamp('created_at');
+
+            $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
         });
     }
 
