@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -12,7 +13,7 @@ class LoginController extends Controller
      * @param Request $request
      * @return User
      */
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         if (Auth::attempt($request->only(['email', 'password']))) {
             return response()->json([
