@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/{product}', [ProductController::class, 'update'])->name('product.update')
                                                                       ->middleware('user.is.admin');
         Route::delete('/{product}', [ProductController::class, 'delete'])->name('product.delete');
+    });
+
+    Route::prefix('orders')->group(function () {
+        Route::post('/', [OrderController::class, 'create'])->name('order.create');
+        Route::get('/{id}', [OrderController::class, 'read'])->name('order.read');
+        Route::put('/{order}', [OrderController::class, 'update'])->name('order.update');
+        Route::delete('/{order}', [OrderController::class, 'delete'])->name('order.delete');
     });
 });
