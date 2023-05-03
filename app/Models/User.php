@@ -45,7 +45,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the merchants for the admin user.
+     * Get the merchants for the user.
      */
     public function merchants(): HasMany
     {
