@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->enum('status', ['out_of_stock', 'in_stock', 'running_low']);
             $table->unsignedBigInteger('merchant_id');
-            $table->timestamp('created_at');
+            $table->timestamps();
 
             $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
         });
