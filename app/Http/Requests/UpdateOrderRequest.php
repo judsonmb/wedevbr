@@ -24,6 +24,8 @@ class UpdateOrderRequest extends FormRequest
         return [
             'status' => 'max:255',
             'user_id' => 'exists:users,id',
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer'
         ];
     }
 }
