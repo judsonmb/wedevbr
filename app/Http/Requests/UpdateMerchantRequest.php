@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\UserIsAdmin;
 
 class UpdateMerchantRequest extends FormRequest
 {
@@ -24,7 +23,7 @@ class UpdateMerchantRequest extends FormRequest
     {
         return [
             'merchant_name' => 'max:255',
-            'admin_id' => ['exists:users,id', new UserIsAdmin()],
+            'admin_id' => 'exists:users,id',
         ];
     }
 }
