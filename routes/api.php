@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MerchantController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/{id}', [MerchantController::class, 'read'])->name('merchant.read');
         Route::put('/{merchant}', [MerchantController::class, 'update'])->name('merchant.update');
         Route::delete('/{merchant}', [MerchantController::class, 'delete'])->name('merchant.delete');
+    });
+
+    Route::prefix('products')->group(function () {
+        Route::post('/', [ProductController::class, 'create'])->name('product.create')
+                                                              ->middleware('user.is.admin');
+        Route::get('/{id}', [ProductController::class, 'read'])->name('product.read');
+        Route::put('/{product}', [ProductController::class, 'update'])->name('product.update')
+                                                                      ->middleware('user.is.admin');
+        Route::delete('/{product}', [ProductController::class, 'delete'])->name('product.delete');
     });
 });
