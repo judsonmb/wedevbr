@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('users')->group(function () {
         Route::post('/', [UserController::class, 'create'])->name('user.create');
-        Route::get('/{user}', [UserController::class, 'read'])->name('user.read');
+        Route::get('/{id}', [UserController::class, 'read'])->name('user.read');
         Route::put('/{user}', [UserController::class, 'update'])->name('user.update');
         Route::delete('/{user}', [UserController::class, 'delete'])->name('user.delete');
     });
