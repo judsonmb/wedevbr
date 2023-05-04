@@ -13,6 +13,12 @@ class DeleteUserTest extends TestCase
     {
         $user = User::factory()->create(['is_admin' => 1]);
 
+        $this->assertDatabaseHas('users', [
+            'full_name' => $user->full_name,
+            'is_admin' => $user->is_admin,
+            'email' => $user->email,
+        ]);
+
         $response = $this->actingAs($user)
                           ->withHeaders([
                                 'Accept' => 'application/json',
