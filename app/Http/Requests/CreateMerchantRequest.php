@@ -3,12 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\UserIsAdmin;
 
 class CreateMerchantRequest extends FormRequest
 {
     /**
-     * Determine if the merchant is authorized to make this request.
+     * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
@@ -24,7 +23,7 @@ class CreateMerchantRequest extends FormRequest
     {
         return [
             'merchant_name' => 'required|max:255',
-            'admin_id' => ['required','exists:users,id', new UserIsAdmin()],
+            'admin_id' => 'required|exists:users,id',
         ];
     }
 }
