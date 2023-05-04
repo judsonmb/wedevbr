@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\OrderItem;
 
 class ReadOrderTest extends TestCase
 {
@@ -15,6 +16,8 @@ class ReadOrderTest extends TestCase
         $user = User::factory()->create();
 
         $newOrder = Order::factory()->create();
+
+        $orderItem = OrderItem::factory()->create(['order_id' => $newOrder->id]);
 
         $response = $this->actingAs($user)
                           ->withHeaders([
@@ -35,7 +38,14 @@ class ReadOrderTest extends TestCase
                             'is_admin' => $newOrder->user->is_admin,
                             'email' => $newOrder->user->email,
                         ],
-                        'order_items' => []
+                        'order_items' => [
+                            [
+                                'id' => $orderItem->id,
+                                'order_id' => $newOrder->id,
+                                'product_id' => $orderItem->product_id,
+                                'quantity' => $orderItem->quantity
+                            ]
+                        ]
                     ]
                 ]
             ]
