@@ -38,7 +38,25 @@ class CreateProductTest extends TestCase
         ]);
     }
 
-    public function test_create_product_without_user_without_merchant(): void
+    public function test_create_product_with_admin_user_without_merchant(): void
+    {
+        $user = User::factory()->create(['is_admin' => 1]);
+
+        $body = Product::factory()->make()->toArray();
+
+        $response = $this->actingAs($user)
+                          ->withHeaders([
+                                'Accept' => 'application/json',
+                            ])
+                          ->post('/api/products', $body);
+
+        
+        $response->assertStatus(403);
+
+        $response->assertJson(['message' => 'Only merchants with admin user can do it.']);
+    }
+
+    public function test_create_product_with_user_without_merchant(): void
     {
         $user = User::factory()->create();
 
