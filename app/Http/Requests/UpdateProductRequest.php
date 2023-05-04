@@ -11,7 +11,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->is_admin;
+        return auth()->user()->is_admin && count(auth()->user()->merchants);
     }
 
     /**
