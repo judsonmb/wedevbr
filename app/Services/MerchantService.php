@@ -17,7 +17,7 @@ class MerchantService
     public function readMerchant(int $id)
     {
         return Merchant::where('id', $id)
-                ->with('admin')
+                ->with('user')
                 ->with('products')
                 ->get();
     }
