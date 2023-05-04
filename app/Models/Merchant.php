@@ -21,11 +21,11 @@ class Merchant extends Model
     ];
 
     /**
-     * Get the admin user that owns the merchant.
+     * Get the user that owns the merchant.
      */
-    public function admin(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'admin_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     /**

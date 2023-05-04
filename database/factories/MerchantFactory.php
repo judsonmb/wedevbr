@@ -19,7 +19,7 @@ class MerchantFactory extends Factory
     {
         return [
             'merchant_name' => fake()->name(),
-            'admin_id' => User::where('is_admin', 1)->inRandomOrder()->first()->id
+            'user_id' => User::inRandomOrder()->first()->id
         ];
     }
 }
