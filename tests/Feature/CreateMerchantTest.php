@@ -48,13 +48,13 @@ class CreateMerchantTest extends TestCase
 
         $response->assertJson(
             [
-                'message' => 'The full name field is required. (and 3 more errors)',
+                'message' => 'The merchant name field is required. (and 1 more error)',
                 'errors' => [
                     'merchant_name' => [
-                        'The full name field is required.'
+                        'The merchant name field is required.'
                     ],
                     'user_id' => [
-                        'The is user id field is required.'
+                        'The user id field is required.'
                     ]
                 ]  
             ]
