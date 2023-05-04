@@ -60,4 +60,30 @@ class CreateMerchantTest extends TestCase
             ]
         );
     }
+
+    public function test_create_merchant_with_user_doesnt_exist(): void
+    {
+        $user = User::factory()->create();
+
+        $body = Merchant::factory()->make(['user_id' => 9999999999])->toArray();
+
+        $response = $this->actingAs($user)
+                         ->withHeaders([
+                            'Accept' => 'application/json',
+                         ])
+                         ->post('/api/merchants', $body);
+        
+        $response->assertStatus(422);
+
+        $response->assertJson(
+            [
+                'message' => 'The selected user id is invalid.',
+                'errors' => [
+                    'user_id' => [
+                        'The selected user id is invalid.'
+                    ]
+                ]  
+            ]
+        );
+    }
 }
