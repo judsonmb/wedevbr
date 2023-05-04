@@ -32,7 +32,7 @@ class UpdateUserTest extends TestCase
         ]);
     }
 
-    public function test_create_user_with_no_admin_user(): void
+    public function test_update_user_with_no_admin_user(): void
     {
         $user = User::factory()->create(['is_admin' => 0]);
 
