@@ -42,10 +42,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::prefix('products')->group(function () {
         Route::post('/', [ProductController::class, 'create'])->name('product.create')
-                                                              ->middleware('user.is.admin');
+                                                              ->middleware('merchant.with.admin.user');
         Route::get('/{id}', [ProductController::class, 'read'])->name('product.read');
         Route::put('/{product}', [ProductController::class, 'update'])->name('product.update')
-                                                                      ->middleware('user.is.admin');
+                                                                      ->middleware('merchant.with.admin.user');
         Route::delete('/{product}', [ProductController::class, 'delete'])->name('product.delete');
     });
 

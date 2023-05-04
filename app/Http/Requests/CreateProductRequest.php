@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\UserIsAdmin;
 
 class CreateProductRequest extends FormRequest
 {
@@ -12,7 +11,7 @@ class CreateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->is_admin;
+        return auth()->user()->is_admin && count(auth()->user()->merchants);
     }
 
     /**
