@@ -23,7 +23,7 @@ class CreateMerchantRequest extends FormRequest
     {
         return [
             'merchant_name' => 'required|max:255',
-            'admin_id' => 'required|exists:users,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }
