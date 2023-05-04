@@ -5,12 +5,13 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 
 class LoginTest extends TestCase
 {
     public function test_success(): void
     {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
 
         $body = [
             'email' => $user->email,
@@ -26,7 +27,7 @@ class LoginTest extends TestCase
 
     public function test_login_without_password(): void
     {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
 
         $body = [
             'email' => $user->email 
