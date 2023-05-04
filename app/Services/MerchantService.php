@@ -10,7 +10,7 @@ class MerchantService
     {
         $newMerchant = new Merchant();
         $newMerchant->merchant_name = $data['merchant_name'];
-        $newMerchant->admin_id = $data['admin_id'];
+        $newMerchant->user_id = $data['user_id'];
         $newMerchant->save();
     }
 
@@ -25,7 +25,7 @@ class MerchantService
     public function updateMerchant(array $data, Merchant $merchant)
     {
         $merchant->merchant_name = $data['merchant_name'] ?? $merchant->merchant_name;
-        $merchant->admin_id = $data['admin_id'] ?? $merchant->admin_id;
+        $merchant->user_id = $data['user_id'] ?? $merchant->user_id;
         $merchant->save();
     }
 

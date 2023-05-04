@@ -23,7 +23,7 @@ class UpdateMerchantRequest extends FormRequest
     {
         return [
             'merchant_name' => 'max:255',
-            'admin_id' => 'exists:users,id',
+            'user_id' => 'exists:users,id',
         ];
     }
 }
