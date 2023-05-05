@@ -26,6 +26,19 @@ Instalar as dependencias para o o uso da aplicação (composer)
 ```
 docker exec wedevbr_php_fpm composer install
 ```
+Renomear o arquivo de configurações
+```
+docker exec wedevbr_php_fpm mv .env.example .env
+```
+Será necessário configurar o arquivo ".env" informando as configurações de conexão com o Banco de Dados, conforme o exemplo:
+```
+DB_CONNECTION=mysql
+DB_HOST=1wedevbr_mariadb
+DB_PORT=3306
+DB_DATABASE=wedevbr
+DB_USERNAME=admin
+DB_PASSWORD=admin
+```
 Gerar nova Key para o Laravel
 ```
 docker exec wedevbr_php_fpm php artisan key:generate
@@ -33,4 +46,8 @@ docker exec wedevbr_php_fpm php artisan key:generate
 Limpar o cache para o uso
 ```
 docker exec wedevbr_php_fpm php artisan config:cache
+```
+Executar as Migrations do Banco de Dados
+```
+docker exec wedevbr_php_fpm php artisan migrate
 ```
